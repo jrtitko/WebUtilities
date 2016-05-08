@@ -1,5 +1,7 @@
 package com.industriousgnomes.web;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +29,14 @@ public class GreetingController {
 	    Invoice invoice = new Invoice();
 	    invoice.setInvoiceNumber(invoiceNumber);
 	    invoice.setSellerName("SellersRUs");
+	    
+	    List<InvoiceDetail> details = Arrays.asList(
+	    		new InvoiceDetail("Item 1", 5),
+	    		new InvoiceDetail("Item 2", 10),
+	    		new InvoiceDetail("Item 3", 15)
+	    );
+	    
+	    invoice.setDetails(details);
 	    System.out.println("*** getInvoice: invoice = " + invoice);
 	    return invoice;
 	}

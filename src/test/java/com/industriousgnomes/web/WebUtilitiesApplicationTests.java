@@ -69,11 +69,10 @@ public class WebUtilitiesApplicationTests {
 				.param("name", "Jimmy"))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(contentType))
-//				.andExpect(jsonPath("$.id", is(1)))
-//				.andExpect(jsonPath("$.content", is("Hello, Jimmy!")))
+				.andExpect(jsonPath("$.id", is(1)))
+				.andExpect(jsonPath("$.content", is("Hello, Jimmy!")))
 				.andReturn()
 				;
-//		result.getResponse().getContentAsString();
 		System.out.println("%%% " + result.getResponse().getContentAsString());
 	}
 
@@ -83,7 +82,14 @@ public class WebUtilitiesApplicationTests {
 				.param("invoiceNumber", "12345"))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(contentType))
-//				.andExpect(jsonPath("$.content", is("Hello, Jimmy!")))
+				.andExpect(jsonPath("$.invoiceNumber", is(12345)))
+				.andExpect(jsonPath("$.sellerName", is("SellersRUs")))
+				.andExpect(jsonPath("$.details[0].item", is("Item 1")))
+				.andExpect(jsonPath("$.details[0].quantity", is(5)))
+				.andExpect(jsonPath("$.details[1].item", is("Item 2")))
+				.andExpect(jsonPath("$.details[1].quantity", is(10)))
+				.andExpect(jsonPath("$.details[2].item", is("Item 3")))
+				.andExpect(jsonPath("$.details[2].quantity", is(15)))
 				.andReturn()
 				;
 		System.out.println("%%% " + result.getResponse().getContentAsString());
