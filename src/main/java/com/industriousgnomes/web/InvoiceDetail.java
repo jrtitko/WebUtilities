@@ -5,6 +5,8 @@ public class InvoiceDetail {
 	private String item;
 	private Integer quantity;
 
+	public InvoiceDetail() {} // Needed for JSON
+	
 	public InvoiceDetail(String item, Integer quantity) {
 		this.item = item;
 		this.quantity = quantity;
